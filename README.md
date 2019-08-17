@@ -1,5 +1,7 @@
 # Restful APIs in NodeJS
 
+Following features are added to the application:
+
 - Adding routes to the APIs
 - Handling errors and imporve project structure
 - Parsing the body and handling CORS
