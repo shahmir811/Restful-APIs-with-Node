@@ -6,6 +6,7 @@ const connectDB = require('./api/config/db');
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+const userRoutes = require('./api/routes/users');
 
 const app = express();
 connectDB();
@@ -13,6 +14,9 @@ const port = process.env.PORT || 5000;
 
 // Used below code to log request
 app.use(morgan('dev'));
+
+// Making folder public
+app.use('/uploads', express.static('uploads'));
 
 // Below is body parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -34,6 +38,7 @@ app.use((req, res, next) => {
 
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
+app.use('/user', userRoutes);
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Below code is for error handling
