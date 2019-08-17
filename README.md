@@ -19,6 +19,14 @@ Following features are added to the application:
 
 - [node.js] - I/O for the backend
 - [Express] - fast node.js network app framework
+- [bcrypt] - Password encryption
+- [body-parser] - Parsing coming requests
+- [jsonwebtoken] - Protecting routes
+- [multer] - File/Image uploads
 
 [node.js]: http://nodejs.org
 [express]: http://expressjs.com
+[bcrypt]: https://www.npmjs.com/package/bcrypt
+[body-parser]: https://www.npmjs.com/package/body-parser
+[jsonwebtoken]: https://www.npmjs.com/package/jsonwebtoken
+[multer]: https://www.npmjs.com/package/multer
