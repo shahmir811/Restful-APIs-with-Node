@@ -3,10 +3,11 @@ const mongoose = require('mongoose');
 const router = express.Router();
 const Order = require('../models/Order');
 const Product = require('../models/Product');
+const auth = require('../middleware/auth');
 
 /////////////////////////////////////////////////////////////////////////
 // Get all orders
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
     const orders = await Order.find()
       .select('_id product quantity')
@@ -35,7 +36,7 @@ router.get('/', async (req, res) => {
 
 /////////////////////////////////////////////////////////////////////////
 // Create new order
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
   // Check whether product with given id is present in product collection
   try {
     const product = await Product.findOne({ _id: req.body.productId });
@@ -84,7 +85,7 @@ router.post('/', async (req, res) => {
 
 /////////////////////////////////////////////////////////////////////////
 // Get order details
-router.get('/:orderId', async (req, res) => {
+router.get('/:orderId', auth, async (req, res) => {
   const id = req.params.orderId;
 
   try {
@@ -117,7 +118,7 @@ router.get('/:orderId', async (req, res) => {
 
 /////////////////////////////////////////////////////////////////////////
 // Delete order
-router.delete('/:orderId', async (req, res) => {
+router.delete('/:orderId', auth, async (req, res) => {
   const id = req.params.orderId;
   try {
     const order = await Order.findByIdAndDelete(id);

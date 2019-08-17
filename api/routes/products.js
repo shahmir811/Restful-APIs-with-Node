@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const auth = require('../middleware/auth');
 const Product = require('../models/Product');
 const multer = require('multer');
 
@@ -68,7 +69,7 @@ router.get('/', async (req, res) => {
 /////////////////////////////////////////////////////////////////////////
 // Add Single Product
 
-router.post('/', upload.single('productImage'), async (req, res) => {
+router.post('/', [auth, upload.single('productImage')], async (req, res) => {
   // upload only single image. productImage is req.file name
 
   try {
@@ -137,7 +138,7 @@ router.get('/:productId', async (req, res) => {
 
 /////////////////////////////////////////////////////////////////////////
 // update product data
-router.patch('/:productId', async (req, res) => {
+router.patch('/:productId', auth, async (req, res) => {
   const id = req.params.productId;
 
   try {
@@ -164,7 +165,7 @@ router.patch('/:productId', async (req, res) => {
   }
 });
 
-router.delete('/:productId', async (req, res) => {
+router.delete('/:productId', auth, async (req, res) => {
   const id = req.params.productId;
 
   try {
