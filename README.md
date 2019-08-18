@@ -23,6 +23,7 @@ Following features are added to the application:
 - [body-parser] - Parsing coming requests
 - [jsonwebtoken] - Protecting routes
 - [multer] - File/Image uploads
+- [morgan] - Logging HTTP requests in console
 
 [node.js]: http://nodejs.org
 [express]: http://expressjs.com
@@ -30,3 +31,4 @@ Following features are added to the application:
 [body-parser]: https://www.npmjs.com/package/body-parser
 [jsonwebtoken]: https://www.npmjs.com/package/jsonwebtoken
 [multer]: https://www.npmjs.com/package/multer
+[morgan]: https://www.npmjs.com/package/morgan
